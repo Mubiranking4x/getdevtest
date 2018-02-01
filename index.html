@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <title>Food Chef</title>
+  </head>
+  <style>
+  *{
+    box-sizing: border-box;
+  }
+
+body {
+	font-size: 1.05em;
+	line-height: 1.25em;
+	font-family: Helvetica Neue, Helvetica, Arial;
+  overflow: auto;
+  margin:0%;
+  padding:0%;
+
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+[class*="col-"] {
+  float: left;
+  padding: 5px;
+
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 25%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 25%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 25%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+    ul{
+      text-decoration: none;
+      list-style: none;
+      float:right;
+
+      margin-right: 70px;
+    }
+    ul li {
+      float: left;
+      margin-right:20px;
+      text-decoration: none;
+    }
+    ul li a {
+      text-decoration:none;
+      color:white;
+      font-weight: bold;
+
+
+    }
+    a{
+      font-weight: bold;
+    }
+    #menu-icon {
+
+
+	width: 40px;
+	height: 40px;
+	background: url('asset/asset/images/iconic.png') center;
+
+
+}
+/*MEDIA QUERY*/
+@media only screen and (max-width : 640px) {
+
+
+
+	#menu-icon {
+
+		display:inline-block;
+    float:right;
+
+	}
+
+	nav ul, nav:active ul {
+
+		display: none;
+		width: 50%;
+		border-radius: 4px 0 4px 4px;
+
+	}
+
+	nav li {
+
+		text-align: center;
+		width: 100%;
+		padding: 10px 0;
+		margin: 0;
+
+	}
+
+	nav:hover ul {
+
+		display: block;
+
+	}
+  nav li a{
+    color:white;
+  }
+}
+.input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 18px;
+  height: 30px;
+
+  padding: 10px 0px;
+  position: relative;
+  top: 50%;
+  width: 350px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+
+
+.input:focus+.underline {
+  transform: scale(1);
+}
+
+.underline {
+
+  display: inline-block;
+
+  margin-top: -4px;
+  position: absolute;
+
+  width: 400px;
+}
+
+
+  </style>
+  <body>
+    <div class="main">
+      <div class="menu">
+        <div class="row">
+          <nav class="col-12" style="  position:absolute; z-index:2;  height:70px; background-color:rgba(0,0,0,0.5);">
+            <a  class="col-4 col-m-4"href="#" style=" background:url('asset/asset/images/logo.png') no-repeat;margin:5px; width:170px; height:70px; float:left;"></a>
+            <ul class="col-8 col-m-8" style="float:right;">
+              <li><a href="#">HOME</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li><a href="#">SERVICES</a></li>
+              <li><a href="#">TEAM</a></li>
+              <li><a href="#">OUR FOOD</a></li>
+              <li><a href="#">TESTIMONIALS</a></li>
+              <li><a href="#">CONTACT</a></li>
+            </ul>
+            <a style="z-index:3; height:40px; width:40px;"href="#" id="menu-icon"></a>
+          </nav>
+        </div>
+        <div class="slides col-12" style="background:url('asset/asset/images/slides1.png') no-repeat;  height: 800px;" >
+          <div class="centered" style="text-align:center;">
+            <div class="col-6 col-m-6" style="z-index: 2; margin-top: 240px;  height:auto; padding:40px;  color: white;">
+              <h2 >WELCOME TO OUR <br>RESTAURANT</h2>
+              <br>
+              <p>Lorem ipsum dolor sit</p>
+              <button style="text-align:center; width: 120px; height:50px;background:#8abe01; color:white;" type="button" name="button">LEARN MORE</button>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+
+      <div class="#about" style="margin-top:10px;">
+
+          <h3 style="text-align:center;">About Us</h3>
+
+          <h4 style="text-align:center; color:#bfcc36;" >About Our Restaurant Website</h4>
+          <p style="text-align:center;">Lorem ipsum dolor sit Proin elit metus.</p>
+          <div class="aboutimage">
+
+                <br>
+
+                  <div class="col-12" style="text-align:center; height:300px;" >
+                    <div class="col-4 col-m-4" style="width: 31%;  background-color:#2dde98;  height:300px;  float:left;">
+                      <h3 style="padding-top:80px; text-align:center; color:#354952;">LOREM IPSUM DOLOR <br> SITAMET</h3>
+
+                    <p style="color:#ffffff; text-align:center; ">Lorem ipsum dolor sit amet, consectetur <br> adipisicing elit. Maecenas cursus ligula <br> quismales uada placerat </p>
+
+
+
+
+
+                    </div>
+                  <img class="col-4 col-m-4"style=" width: 31%;  float:left;  height:300px;  "  src="asset/asset/images/about1.jpg" alt="">
+                  <div class="col-4 col-m-4" style="width: 31%;  background-color:#03a9f5;  height:300px; float:left;">
+                    <h3 style="padding-top:80px; text-align:center; color:#354952;">LOREM IPSUM DOLOR <br> SITAMET</h3>
+
+                  <p style="color:#ffffff; text-align:center; ">Lorem ipsum dolor sit amet, consectetur <br> adipisicing elit. Maecenas cursus ligula <br> quismales uada placerat </p>
+
+
+
+
+
+                  </div>
+                  </div>
+
+
+                    <div class="col-12 col-m-12" style="height:300px; margin-top:10px;">
+                      <img class="col-4 col-m-4" style="  width: 30%;float:left;  height:300px;"  src="asset/asset/images/about2.jpg" alt="">
+                      &nbsp;
+                      <div class="col-4 col-m-4" style=" width: 30%; background-color:#ff9801;  height:300px;  float:left;">
+                        <h3 style=" text-align:center; padding-top:80px; color:#354952;">LOREM IPSUM DOLOR <br> SITAMET</h3>
+
+                      <p style="color:#ffffff; text-align:center; ">Lorem ipsum dolor sit amet, consectetur <br> adipisicing elit. Maecenas cursus ligula <br> quismales uada placerat </p>
+
+                      </div>
+                      &nbsp;
+                      <img class="col-4 col-m-4" style="  width: 30%; float:left;  height:300px;"  src="asset/asset/images/about3.jpg" alt="">
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="services" style="">
+        <h3 class="col-12 col-m-6"  style="text-align:center;">Our Services</h3>
+
+        <div class="col-12 col-m-6" style="  height:450px;">
+          <div class="col-5 col-m-4" style=" float:left; height:440px;  margin-right:20px;">
+            <div class="" style="height:30%; text-align:left; ">
+              <img src="asset/asset/images/cocktail.png" style="width:60px; height:60px; float:left;"  alt="">
+              <p style="text-align:center; width:100%;">Lorem ipsum dolor sit amet, consectetur  adipisicing elit. Maecenas cursus ligula  quis <br>   Malesuada placerat</p>
+
+            </div>
+            <br>
+            <div class="" style="height:30%;">
+
+              <img src="asset/asset/images/knifeandfork.png" style="width:60px; height:60px; float:left; "  alt="">
+              <p class="" style="text-align:center;"> Lorem ipsum dolor sit amet, consectetur  adipisicing elit. Maecenas cursus ligula  quis  <br>  Malesuada placerat</p>
+            </div>
+
+            <br>
+            <div class="" style="height:30%;">
+
+              <img src="asset/asset/images/spoon.png" style="  width:60px; height:60px;  float:left;"  alt="">
+              <p style="text-align:center;"> Lorem ipsum dolor sit amet, consectetur  adipisicing elit. Maecenas cursus ligula  quis <br>   Malesuada placerat</p>
+            </div>
+
+          </div>
+          <br>
+            <div class="col-4 col-m-4"  >
+              <img  style=" width:70%; height:390px; float:left; " src="asset/asset/images/c1.png" alt="">
+            </div>
+
+            <div class="col-4 col-m-4" style="height:390px; float:left;" >
+              <img style="width:90%; height:50%;"src="asset/asset/images/service1.jpg" alt="">
+              <img style="width:90%; height:50%;"src="asset/asset/images/service2.jpg" alt="">
+            </div>
+
+        </div>
+
+      </div>
+      <br>
+      <div class="#team">
+        <h3 style="text-align:center;">Team</h3>
+        <div class="row">
+          <div class="col-12 col-m-12" style="height:400px;  ">
+            <div class="col-3 col-m-4" style=" height:400px;  float:left; ">
+              <div class="cent" style="text-align:center;">
+              <img style="border-width:5px; border-style:inset; border-top-color:#f25252; border-left-color:#f25252; width:200px; height:300px;" src="asset/asset/images/team1.jpg" alt="">
+            </div>
+              <h3 style="text-align:center; height:8px;" >James Roy</h3>
+              <p  style="text-align:center;">Fuscue eu semper lacus, sodales id <br>
+                elit a, feugiat porttitor nulla lacinia </p>
+            </div>
+            <div class="col-3 col-m-4" style=" height:400px;   float:left; ">
+              <div class="cent" style="text-align:center;">
+              <img style="border-width:5px; border-style:inset; border-top-color:#f25252; border-left-color:#f25252; width:200px; height:300px;" src="asset/asset/images/team2.jpg" alt="">
+            </div>
+              <h3 style="text-align:center; height:8px;" >John Deol</h3>
+              <p style="text-align:center;">Fuscue eu semper lacus, sodales id <br>
+                elit a, feugiat porttitor nulla lacinia </p>
+            </div>
+            <div class="col-3 col-m-4" style=" height:400px;  float:left; ">
+              <div class="cent" style="text-align:center;">
+              <img style="border-width:5px; border-style:inset; border-top-color:#f25252; border-left-color:#f25252; width:200px; height:300px;" src="asset/asset/images/team3.jpg" alt="">
+            </div>
+              <h3 style="text-align:center; height:8px;" >Edward Cren</h3>
+              <p style="text-align:center;">Fuscue eu semper lacus, sodales id <br>
+                elit a, feugiat porttitor nulla lacinia </p>
+            </div>
+            <div class="col-3 col-m-4" style=" height:400px;   float:right; ">
+              <div class="cent" style="text-align:center;">
+              <img style="border-width:5px; border-style:inset; border-top-color:#f25252; border-left-color:#f25252; width:200px; height:300px;" src="asset/asset/images/team4.jpg" alt="">
+            </div>
+              <h3 style="text-align:center; height:8px;" >Lisaen Eddy</h3>
+              <p style="text-align:center;">Fuscue eu semper lacus, sodales id <br>
+                elit a, feugiat porttitor nulla lacinia </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <br>
+      <div class="#food">
+        <h3 style="text-align:center">Our Food</h3>
+        <div class="row">
+          <div class="col-12 col-m-12" style="height:280px;">
+            <div class="cent" style="text-align:center;">
+            <img class="col-3 col-m-3" style=" width:270px; height:270px;  float:left; " src="asset/asset/images/foods1.png" alt="">
+          </div>
+          <div class="cent" style="text-align:center;">
+          <img class="col-3 col-m-3" style=" width:270px; height:270px;   float:left; " src="asset/asset/images/foods2.png" alt="">
+        </div>
+            <div class="cent" style="text-align:center;">
+            <img class="col-3 col-m-3" style=" width:270px; height:270px;   float:left; " src="asset/asset/images/foods3.png" alt="">
+          </div>
+          <div class="cent" style="text-align:center;">
+              <img class="col-3 col-m-3" style=" width:270px; height:270px;   float:left; " src="asset/asset/images/foods4.png" alt="">
+            </div>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-12 col-m-12" style="width:100%; height:280px; ">
+              <div class="cent" style="text-align:center;">
+              <img class="col-3 col-m-3" style="  width:270px; height:270px; float:left;  " src="asset/asset/images/foods5.png" alt="">
+            </div>
+            <div class="cent" style="text-align:center;">
+            <img class="col-3 col-m-2" style="  width:270px; height:270px;  float:left; " src="asset/asset/images/foods6.png" alt="">
+          </div>
+          <div class="cent" style="text-align:center;">
+              <img class="col-3 col-m-2" style="  width:270px; height:270px;  float:left; " src="asset/asset/images/foods7.png" alt="">
+            </div>
+            <div class="cent" style="text-align:center;">
+                <img  class="col-3 col-m-3"style="  width:270px; height:270px;  float:left;" src="asset/asset/images/foods8.png" alt="">
+              </div>
+              </div>
+          </div>
+            <div class="row">
+              <div class="col-12 col-m-12" style="height:280px; ">
+                <div class="cent" style="text-align:center;">
+                <img class="col-3 col-m-3 "style=" width:270px;  height:270px;   float:left; " src="asset/asset/images/foods9.png" alt="">
+              </div>
+              <div class="cent" style="text-align:center;">
+              <img class="col-3 col-m-2 "style=" width:270px;  height:270px;  float:left;" src="asset/asset/images/foods10.png" alt="">
+            </div>
+            <div class="cent" style="text-align:center;">
+                <img class="col-3 col-m-2 "style=" width:270px;  height:270px;  float:left;" src="asset/asset/images/foods11.png" alt="">
+              </div>
+              <div class="cent" style="text-align:center;">
+                  <img class="col-3 col-m-3 "style=" width:270px;  height:270px;  float:left; " src="asset/asset/images/foods12.png" alt="">
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+      <div class="#testimonial" >
+
+              <div class="col-12" style=" background:url('asset/asset/images/stats1.jpg') no-repeat; height:auto;">
+
+                <h2 style="text-align:center; z-index:2; color:white;">TESTIMONIALS</h2>
+                <br>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="col-6 col-m-6 " style="z-index:2; float:left;" >
+                      <div class="cent" style="text-align:center;">
+                        <img style="align"src="asset/asset/images/quote.png" alt="">
+                      </div>
+                    <p style="color:white; text-align:center;">Pellentesque urna ex,ultricies a nunc at, pretium maximus <br> nisi. Vestibulum non auctor diam. Mauris eget consectetur <br> mauris. Aenean leo elit, accumsan vel elit vitae, mattis <br> ultricies lacus. Cras consectetur justo lorem</p>
+
+                    <h4 style="color:white; text-align:center;">DIVIDE RULE - VISITOR</h4>
+                    </div>
+                    <div class="col-6 col-m-6" style="z-index:2; float:right;">
+                      <div class="cent" style="text-align:center;">
+                     <img style="align"src="asset/asset/images/quote.png" alt="">
+                   </div>
+                      <p style=" color:white; text-align:center;">Pellentesque urna ex,ultricies a nunc at, pretium maximus <br> nisi. Vestibulum non auctor diam. Mauris eget consectetur <br> mauris. Aenean leo elit, accumsan vel elit vitae, mattis <br> ultricies lacus. Cras consectetur justo lorem</p>
+
+                      <h4 style="color:white; text-align:center;">DIVIDE RULE - VISITOR</h4>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+      </div>
+      <div class="#touch">
+        <div class="col-12">
+          <h2 style="text-align:center;">Get In Touch </h2>
+        </div>
+        <div class="col-12 col-m-12">
+          <div class="col-6 col-m-6" style="height:500px; float:left; background:#8abe01;">
+            <h2 style="text-align:center; color:white;">Contact Information</h2>
+            <div class="col-12 col-m-6">
+              <h4 style="text-align:center;">Address
+                 </h4>
+                 <p style="text-align:center; color:white;">Extended Stay Restaurant <br>
+              87th St.Kansas City Lenexa 241.</p>
+            </div>
+            <br>
+            <div class="col-12 col-m-6">
+              <h4 style="text-align:center;">Mobile
+                 </h4>
+                 <p style="text-align:center; color:white;">
+                  +0(23) 954 566 7788
+              <br>
+              +0(23)375 366 945
+            </p>
+            </div>
+            <br>
+            <div class="col-12 col-m-6">
+              <h4 style="text-align:center;">E-mail
+                 </h4>
+                 <p style="text-align:center; color:white;">mail@example.com
+              </p>
+            </div>
+
+
+
+          </div>
+          <div class="col-6 col-m-6" style=" padding:40px; height:500px; float:right; background:url('asset/asset/images/contact.png') no-repeat;">
+            <div class="col-12 col-m-12">
+              <label style="color:white;"for="">Name</label>
+              <br>
+              <input type="text" class="input" name="" value="">
+              <span class="underline" ></span>
+            </div>
+            <br>
+            <div class="col-12 col-m-12">
+              <label style="color:white;"for="">Email</label>
+              <br>
+              <input type="text" class="input" name="" value="">
+              <span class="underline" ></span>
+            </div>
+            <br>
+            <div class="col-12 col-m-12">
+              <label style="color:white;"for="">Phone Number</label>
+              <br>
+              <input type="text" class="input" name="" value="">
+              <span class="underline" ></span>
+            </div>
+            <br>
+            <div class="col-12 col-m-12">
+              <label style="color:white;"for="">Message</label>
+              <br>
+              <input style="height:60px;" type="text" class="input" name="" value="">
+              <span class="underline" ></span>
+            </div>
+            <br>
+            <div class="xenter" style="text-align:center;">
+              <button style="text-align:center; width: 120px; height:50px;background:#8abe01; color:white;"type="button" name="button">SUBMIT</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="map col-12" style="width:100%; height:300px;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49639.882333909365!2d-94.75013379574777!3d38.95841756094204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0ec985fa46073%3A0x178f7880c66a7a55!2sExtended+Stay+America+Hotel+Kansas+City+-+Lenexa+-+87th+St.!5e0!3m2!1sen!2sng!4v1517439143099" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+      </div>
+      <div class="#subscribe" >
+          <div class="col-12" style="background:#f45a5a;"  >
+            <div class="col-6 col-m-6" style="float:left; background:#f45a5a; height:150px; padding:40px;" >
+              <h3 style="color:white;">Subscribe to get the latest info to your inbox</h3>
+            </div>
+            <div class="col-6 col-m-6" style="float:right; background:#f45a5a; height:150px; padding:50px;"  >
+              <form class="" action="index.html" method="post">
+                <input style=" border:2px solid white; width:150px; height:30px;"type="text" name="" value="">
+                <button style=" border:2px solid white; width: 80px; height:30px;background:#8abe01; color:white;"type="button" name="button">Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+      </div>
+      <div class=" col-12 col-m-12" style="background:#000000; height:70px;">
+      <div class="col-6 col-m-6" style="float:left; background:#000000;">
+          <p style="color:white;">Follow us on</p>
+      </div>
+      <div class="col-6 col-m-6" style="float:right; background:#000000; padding-left:5px;">
+        <p style="color:white;">&copy; 2017 Food Chef. All Rights Reserved | Designed by <b style="color:#f45a5a;">Idris Mubarak</b></p>
+      </div>
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
